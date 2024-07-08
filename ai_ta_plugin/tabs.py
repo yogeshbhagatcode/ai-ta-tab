@@ -21,8 +21,6 @@ class AITab(EnrolledTab):
     @property
     def link_func(self):
         def _link_func(course, reverse_func):
-            # return "http://apps.local.overhang.io:8080/ai/"
-            # return f"http://{settings.MFE_CONFIG['BASE_URL']}:8080/ai-ta/"
             return get_ai_ta_mfe_url(course)
         return _link_func
 
@@ -32,32 +30,6 @@ class AITab(EnrolledTab):
         Courseware tabs are viewable to everyone, even anonymous users.
         """
         return True
-
-
-# def _get_url_with_view_query_params(path: str, view: Optional[str] = None) -> str:
-#     """
-#     Helper function to build url if a url is configured
-
-#     Args:
-#         path (str): The path in the discussions MFE
-#         view (str): which view to generate url for
-
-#     Returns:
-#         (str) URL link for MFE
-
-#     """
-#     if settings.DISCUSSIONS_MICROFRONTEND_URL is None:
-#         return ''
-#     url = f"{settings.DISCUSSIONS_MICROFRONTEND_URL}/{path}"
-
-#     query_params = {}
-#     if view == "in_context":
-#         query_params.update({'inContext': True})
-
-#     if query_params:
-#         url = f"{url}?{urlencode(query_params)}"
-
-#     return url
 
 
 def get_ai_ta_mfe_url(course_key: CourseKey, view: Optional[str] = None) -> str:
